@@ -14,10 +14,20 @@ pipeline {
             }
         }
         
-       stage('Unit Test for tournament controllers') {
+                           stage('Unit Test for tournament controllers') {
                     steps {
                         script {
                             sh 'npm run testTournament'
+                        }
+                    }
+                }
+                         stage('SonarQube Analysis') {
+                    steps {
+                        script {
+                            def scannerHome = tool 'scanner'
+                            withSonarQubeEnv {
+                                sh "${scannerHome}/bin/sonar-scanner -X"
+                            }
                         }
                     }
                 }
