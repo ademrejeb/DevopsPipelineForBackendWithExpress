@@ -31,13 +31,20 @@ pipeline {
                         }
                     }
                 }
-        stage('Build application') {
-            steps {
-                script {
-                    sh 'npm run build'
+                    stage('Build application') {
+                        steps {
+                            script {
+                                sh 'npm run build'
+                                    }
+                                }
+                    }
+                    stage('Building DockerImage') {
+                    steps {
+                        script {
+                            sh('docker-compose build')
+                        }
+                    }
                 }
-            }
-        }
       
     }
 }
