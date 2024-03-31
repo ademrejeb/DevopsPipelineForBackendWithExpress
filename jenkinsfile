@@ -2,7 +2,8 @@ pipeline {
     agent any
     environment {
         
-        NODE_VERSION = '20'
+         registryCredentials = "nexus"
+        registry = "172.17.0.2:8083"
     }
     stages {
         stage('Install dependencies') {
@@ -13,7 +14,13 @@ pipeline {
             }
         }
         
-       
+       stage('Unit Test for tournament controllers') {
+                    steps {
+                        script {
+                            sh 'npm run testTournament'
+                        }
+                    }
+                }
         stage('Build application') {
             steps {
                 script {
