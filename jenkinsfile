@@ -1,7 +1,8 @@
 pipeline {
     agent any
     environment {
-        nexusRepoUrl = "127.0.0.1:8083"
+        
+        NODE_VERSION = '20'
     }
     stages {
         stage('Install dependencies') {
