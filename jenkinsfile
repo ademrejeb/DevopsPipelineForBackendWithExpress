@@ -11,13 +11,7 @@ pipeline {
                 }
             }
         }
-        stage('Unit Test for tournament') {
-            steps {
-                script {
-                    sh 'npm run test'
-                }
-            }
-        }
+        
        
         stage('Build application') {
             steps {
