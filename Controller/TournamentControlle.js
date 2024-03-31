@@ -13,11 +13,25 @@ const ResultController=require('../Controller/ResultController');
 const Result = require('../models/Result.js');
 const StadiumModel = require('../models/Stadium.js')
 
+async function getall (req,res){
+    try{
+        const data = await Tournament.find()
+        res.status(200).send(data)
+
+    }catch(err){
+        res.status(400).json({error:err});
+
+
+    }
+
+}
+
 async function add(req, res) {
     
     const user = req.user;
+    const Data = req.body
     try {
-        const tournamentData = { ...req.body, user: user.id };
+        const tournamentData = { Data, user: user.id };
 
 
         const base64Image = req.body.logo.split(';base64,').pop();
@@ -36,18 +50,7 @@ async function add(req, res) {
     }
 }
 
-async function getall (req,res){
-    try{
-        const data = await Tournament.find()
-        res.status(200).send(data)
 
-    }catch(err){
-        res.status(400).json({error:err});
-
-
-    }
-
-}
 
 async function getbyid (req,res){
     try{
