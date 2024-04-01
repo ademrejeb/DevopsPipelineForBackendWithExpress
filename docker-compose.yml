@@ -2,7 +2,7 @@ version: '3'
 
 services:
   node_app:
-    container_name: LUTBackend
+    container_name: ContainerBackEND
     build:
       context: .
       dockerfile: Dockerfile
