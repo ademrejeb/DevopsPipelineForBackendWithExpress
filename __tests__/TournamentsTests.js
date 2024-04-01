@@ -11,8 +11,8 @@ mongo.connect(config.url, {
   useNewUrlParser: true,
 }).then(() => {
   console.log("Database connected");
-  app.listen(3000, () => {
-    console.log("Server started on port 3000");
+  app.listen(3010, () => {
+    console.log("Server started on port 3010");
   });
 }).catch((err) => {
   console.error("Error with database connection:", err);
