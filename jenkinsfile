@@ -47,6 +47,17 @@ pipeline {
                     }
                 }
 
+ stage('Deploy to Nexus') {
+            steps {
+                script {
+                    docker.withRegistry("http://"+registry, registryCredentials) {
+                        sh "docker tag backend-pipe_main_node_app:latest $registry/devops_pipeline_for_backend_adem_node_app:latest"
+                        sh('docker push $registry/backned-pipe_main_node_app:latest')
+                    }
+                }
+            }
+        }
+
            
       
     }
